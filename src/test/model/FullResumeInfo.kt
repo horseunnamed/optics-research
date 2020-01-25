@@ -1,6 +1,7 @@
-package model
+package test.model
 
-import Lens
+import optics.Lens
+
 
 data class FullResumeInfo(
     val id: Int,
@@ -10,17 +11,17 @@ data class FullResumeInfo(
     companion object {
         val id = Lens(
             get = FullResumeInfo::id,
-            set = { resume, id -> resume.copy(id = id) }
+            set = { s, f -> s.copy(id = f) }
         )
 
         val personalInfo = Lens(
             get = FullResumeInfo::personalInfo,
-            set = { resume, personalInfo -> resume.copy(personalInfo = personalInfo) }
+            set = { s, f -> s.copy(personalInfo = f) }
         )
 
         val hiddenFields = Lens(
             get = FullResumeInfo::hiddenFields,
-            set = { resume, hiddenFields -> resume.copy(hiddenFields = hiddenFields) }
+            set = { s, f -> s.copy(hiddenFields = f) }
         )
     }
 }

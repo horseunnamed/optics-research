@@ -1,6 +1,7 @@
-package model
+package test.model
 
-import Lens
+import optics.Lens
+
 
 data class PersonalInfo(
     val firstName: String
@@ -8,7 +9,7 @@ data class PersonalInfo(
     companion object {
         val firstName = Lens(
             get = PersonalInfo::firstName,
-            set = { personalInfo, firstName -> personalInfo.copy(firstName = firstName) }
+            set = { s, f -> s.copy(firstName = f) }
         )
     }
 }
