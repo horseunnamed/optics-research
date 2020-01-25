@@ -45,3 +45,12 @@ fun <S, F> Lens<S, F>.toListTraversal(): ListTraversal<S, F> {
     )
 }
 
+// Lens -> Optional
+
+fun <S, F> Lens<S, F>.toOptional(): Optional<S, F> {
+    return Optional(
+        get = get,
+        set = set
+    )
+}
+

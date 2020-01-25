@@ -1,12 +1,15 @@
 package test.model
 
+import model.Experience
 import optics.Lens
+import optics.Optional
 
 
 data class FullResumeInfo(
     val id: Int,
     val personalInfo: PersonalInfo,
-    val hiddenFields: List<HiddenFieldItem>
+    val hiddenFields: List<HiddenFieldItem>,
+    val experience: Experience?
 ) {
     companion object {
         val id = Lens(
@@ -22,6 +25,11 @@ data class FullResumeInfo(
         val hiddenFields = Lens(
             get = FullResumeInfo::hiddenFields,
             set = { s, f -> s.copy(hiddenFields = f) }
+        )
+
+        val experience = Optional(
+            get = FullResumeInfo::experience,
+            set = { s, f -> s.copy(experience = f) }
         )
     }
 }

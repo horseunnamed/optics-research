@@ -7,7 +7,7 @@ Inspired by [Lens](https://arrow-kt.io/docs/optics/lens/) from arrow-kt
 
 - [x] Lens
 - [x] ListTraversal
-- [ ] Optional
+- [x] Optional
 - [ ] Prism
 - [ ] Optics DSL
 - [ ] Find solution for generic Traversals (HKT required?)
