@@ -26,3 +26,19 @@ infix fun <A, B, C> Optional<A, B>.at(optional: Optional<B, C>): Optional<A, C> 
 }
 
 infix fun <A, B, C> Optional<A, B>.at(lens: Lens<B, C>): Optional<A, C> = this at lens.toOptional()
+infix fun <A, B, C> Optional<A, B>.at(listTraversal: ListTraversal<B, C>) = this.toListTraversal() at listTraversal
+
+// Optional -> ListTraversal
+
+fun <S, F> Optional<S, F>.toListTraversal(): ListTraversal<S, F> {
+    return ListTraversal(
+        get = { s ->
+            get(s)?.let { listOf(it) } ?: emptyList()
+        },
+        modify = { s, update ->
+            get(s)?.let(update)?.let {
+                set(s, it)
+            } ?: s
+        }
+    )
+}

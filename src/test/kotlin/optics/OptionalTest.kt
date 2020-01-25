@@ -36,4 +36,18 @@ internal class OptionalTest {
         assertEquals(expected, actual)
     }
 
+    @Test
+    fun `Optional composes with ListTraversal`() {
+        val traversal = FullResumeInfo.experience at Experience.lastPositions at ListTraversal.all()
+        val actual = traversal.set(resumeInfo, "SCP")
+
+        val expected = resumeInfo.copy(
+            experience = resumeInfo.experience?.copy(
+                lastPositions = resumeInfo.experience.lastPositions.map { "SCP" }
+            )
+        )
+
+        assertEquals(expected, actual)
+    }
+
 }

@@ -17,7 +17,10 @@ object TestData {
             HiddenFieldItem(id = 456, name = "last_item"),
             HiddenFieldItem(id = 789, name = "third_item")
         ),
-        experience = Experience(years = 100)
+        experience = Experience(
+            years = 100,
+            lastPositions = listOf("Bookstore", "Soda magazine", "Big credit company")
+        )
     )
 
 }
