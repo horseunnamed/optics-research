@@ -1,11 +1,10 @@
-package test
+package optics
 
-import optics.at
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import test.TestData.resumeInfo
+import test.model.TestData.resumeInfo
 import test.model.FullResumeInfo
 import test.model.PersonalInfo
-import kotlin.test.assertEquals
 
 class LensTest {
 

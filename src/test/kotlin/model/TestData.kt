@@ -1,4 +1,4 @@
-package test
+package test.model
 
 import test.model.FullResumeInfo
 import test.model.HiddenFieldItem
