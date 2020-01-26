@@ -1,16 +1,16 @@
 package model
 
 import optics.Lens
-import optics.Optional
+import optics.OptLens
 
 sealed class NetworkResult<out T> {
     companion object {
-        fun <T> success() = Optional<NetworkResult<T>, HttpSuccess<T>>(
+        fun <T> success() = OptLens<NetworkResult<T>, HttpSuccess<T>>(
             get = { it as? HttpSuccess },
             set = { _, f -> f }
         )
 
-        fun <T> error() = Optional<NetworkResult<T>, HttpError>(
+        fun <T> error() = OptLens<NetworkResult<T>, HttpError>(
             get = { it as? HttpError },
             set = { _, f -> f }
         )

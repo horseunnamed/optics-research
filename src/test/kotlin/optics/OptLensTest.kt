@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 import test.model.FullResumeInfo
 import test.model.TestData.resumeInfo
 
-internal class OptionalTest {
+internal class OptLensTest {
 
     @Test
     fun `Optional gets non-null value`() {

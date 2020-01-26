@@ -32,10 +32,10 @@ infix fun <A, B, C> Lens<A, B>.at(lens: Lens<B, C>): Lens<A, C> {
     )
 }
 
-infix fun <A, B, C> Lens<A, B>.at(optional: Optional<B, C>) = toOptional() at optional
+infix fun <A, B, C> Lens<A, B>.at(optLens: OptLens<B, C>) = toOptional() at optLens
 infix fun <A, B, C> Lens<A, B>.at(traversal: ListTraversal<B, C>) = toListTraversal() at traversal
 
-// Lens -> ListTraversal
+// Conversions
 
 fun <S, F> Lens<S, F>.toListTraversal(): ListTraversal<S, F> {
     return ListTraversal(
@@ -46,10 +46,8 @@ fun <S, F> Lens<S, F>.toListTraversal(): ListTraversal<S, F> {
     )
 }
 
-// Lens -> Optional
-
-fun <S, F> Lens<S, F>.toOptional(): Optional<S, F> {
-    return Optional(
+fun <S, F> Lens<S, F>.toOptional(): OptLens<S, F> {
+    return OptLens(
         get = get,
         set = set
     )

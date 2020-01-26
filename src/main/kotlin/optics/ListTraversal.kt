@@ -50,4 +50,4 @@ infix fun <A, B, C> ListTraversal<A, B>.at(traversal: ListTraversal<B, C>): List
 }
 
 infix fun <A, B, C> ListTraversal<A, B>.at(lens: Lens<B, C>) = this at lens.toListTraversal()
-infix fun <A, B, C> ListTraversal<A, B>.at(optional: Optional<B, C>) = this at optional.toListTraversal()
+infix fun <A, B, C> ListTraversal<A, B>.at(optLens: OptLens<B, C>) = this at optLens.toListTraversal()

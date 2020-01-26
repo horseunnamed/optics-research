@@ -2,7 +2,7 @@ package test.model
 
 import model.Experience
 import optics.Lens
-import optics.Optional
+import optics.OptLens
 
 
 data class FullResumeInfo(
@@ -27,7 +27,7 @@ data class FullResumeInfo(
             set = { s, f -> s.copy(hiddenFields = f) }
         )
 
-        val experience = Optional(
+        val experience = OptLens(
             get = FullResumeInfo::experience,
             set = { s, f -> s.copy(experience = f) }
         )
