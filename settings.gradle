@@ -1,2 +1,3 @@
 rootProject.name = 'optics-research'
 
+include ':optics-core'
