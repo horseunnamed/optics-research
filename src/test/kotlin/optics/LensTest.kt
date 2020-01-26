@@ -15,13 +15,13 @@ class LensTest {
     @Test
     fun `Lens laws`() {
         val lens = FullResumeInfo.id
-        LensLaws.assertAll(lens, resumeInfo, 666)
+        LensLaws.assertAll(lens, resumeInfo, 666, { it * 2 }, { it + 1 })
     }
 
     @Test
     fun `Lens composes with Lens`() {
         val lens = FullResumeInfo.personalInfo at PersonalInfo.firstName
-        LensLaws.assertAll(lens, resumeInfo, "John")
+        LensLaws.assertAll(lens, resumeInfo, "John", String::capitalize, String::reversed)
     }
 
     @Test
