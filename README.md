@@ -8,7 +8,8 @@ Inspired by [Lens](https://arrow-kt.io/docs/optics/lens/) from arrow-kt
 - [x] Lens
 - [x] ListTraversal
 - [x] Optional
-- [ ] Prism
+- [ ] ~~Prism~~
 - [ ] Optics DSL
 - [ ] Find solution for generic Traversals (HKT required?)
 - [ ] Property tests for optic laws
+- [ ] Performance benchmarks
