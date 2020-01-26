@@ -8,7 +8,7 @@ import test.model.PersonalInfo
 object TestData {
 
     val resumeInfo = FullResumeInfo(
-        id = 123,
+        id = 1,
         personalInfo = PersonalInfo(
             firstName = "Jack"
         ),
