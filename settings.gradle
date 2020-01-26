@@ -1,3 +1,4 @@
 rootProject.name = 'optics-research'
 
 include ':optics-core'
+include ':optics-generator-plugin'
