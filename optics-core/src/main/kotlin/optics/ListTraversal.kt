@@ -10,7 +10,7 @@ class ListTraversal<S, I>(
     fun set(s: S, item: I) = modify(s) { item }
 
     companion object {
-        fun <I> source(predicate: (Int, I) -> Boolean): ListTraversal<List<I>, I> {
+        fun <I> each(predicate: (Int, I) -> Boolean): ListTraversal<List<I>, I> {
             return ListTraversal(
                 get = { it.filterIndexed(predicate) },
                 modify = { s, update ->
@@ -25,10 +25,9 @@ class ListTraversal<S, I>(
             )
         }
 
-        fun <I> all(): ListTraversal<List<I>, I> = source { _, _ -> true }
-        fun <I> each(predicate: (I) -> Boolean): ListTraversal<List<I>, I> = source { _, item -> predicate(item) }
-        fun <I> eachPos(predicate: (Int) -> Boolean): ListTraversal<List<I>, I> = source { ind, _ -> predicate(ind) }
-        fun <I> at(position: Int): ListTraversal<List<I>, I> = source { ind, _ -> ind == position }
+        fun <I> eachItem(predicate: (I) -> Boolean): ListTraversal<List<I>, I> = each { _, item -> predicate(item) }
+        fun <I> eachPos(predicate: (Int) -> Boolean): ListTraversal<List<I>, I> = each { ind, _ -> predicate(ind) }
+        fun <I> all(): ListTraversal<List<I>, I> = each { _, _ -> true }
     }
 }
 
@@ -50,4 +49,4 @@ infix fun <A, B, C> ListTraversal<A, B>.at(traversal: ListTraversal<B, C>): List
 }
 
 infix fun <A, B, C> ListTraversal<A, B>.at(lens: Lens<B, C>) = this at lens.toListTraversal()
-infix fun <A, B, C> ListTraversal<A, B>.at(optional: Optional<B, C>) = this at optional.toListTraversal()
+infix fun <A, B, C> ListTraversal<A, B>.at(optLens: OptLens<B, C>) = this at optLens.toListTraversal()

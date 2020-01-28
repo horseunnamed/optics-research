@@ -1,12 +1,15 @@
 package optics
 
 import model.Experience
-import org.junit.jupiter.api.Assertions.*
+import model.HttpError
+import model.HttpSuccess
+import model.NetworkResult
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import test.model.FullResumeInfo
 import test.model.TestData.resumeInfo
 
-internal class OptionalTest {
+internal class OptLensTest {
 
     @Test
     fun `Optional gets non-null value`() {
@@ -48,6 +51,22 @@ internal class OptionalTest {
         )
 
         assertEquals(expected, actual)
+    }
+
+    @Test
+    fun `Optional can be used for sealed class`() {
+        val networkResultSuccess = HttpSuccess(data = "Ok!")
+        val networkResultError = HttpError(code = 404)
+
+        val optics = NetworkResult.success<String>() at HttpSuccess.data()
+        val actual1 = optics.set(networkResultSuccess, "hello")
+        val actual2 = optics.set(networkResultError, "hello")
+
+        val expected1 = HttpSuccess(HttpSuccess(data = "hello"))
+        val expected2 = HttpError(code = 404)
+
+        assertEquals(expected1, actual1)
+        assertEquals(expected2, actual2)
     }
 
 }
